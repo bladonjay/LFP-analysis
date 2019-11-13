@@ -1,0 +1,23 @@
+function [a] = NP_LoadWaveletPhaseBandLFP(filebase,channel,frequencyidx,normalized)
+% function [a] = NP_LoadWaveletPhaseBandLFP(filebase,channel,frequencyidx,normalized)
+if (nargin <= 3)
+  normalized = 0;
+end
+
+NumLevels = 65;
+
+
+
+
+  fid = fopen([filebase,'_DSlfpWaveletPhaseCH',int2str(channel)]);
+  fseek(fid,(frequencyidx-1)*4,-1);
+  
+  EEGlength = NP_GetEEGLength(filebase);
+  
+  a = zeros(EEGlength,1);
+  
+  a = fread(fid,EEGlength,'single',64*4);
+
+
+ fclose(fid);
+
