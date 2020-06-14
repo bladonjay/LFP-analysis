@@ -71,7 +71,7 @@ elseif r >= .9
   t = sqrt(n^2-(n^2-R^2)*exp(c2/n));      % equ. 26.25
 else 
   t = NaN;
-  warning('Resultant vector does not allow to specify confidence limits on mean. \nResults may be wrong or inaccurate.');
+  warning(sprintf('Resultant vector does not allow to specify confidence limits on mean. \n Results may be wrong or inaccurate.'));
 end
 
 % apply final transform

@@ -1,4 +1,4 @@
-function [pval m] = circ_otest(alpha, sz, w)
+function [pval, m] = circ_otest(alpha, sz, w)
 %
 % [pval, m] = circ_otest(alpha,sz,w)
 %   Computes Omnibus or Hodges-Ajne test for non-uniformity of circular data.
