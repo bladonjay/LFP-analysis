@@ -40,15 +40,15 @@ Filtered=filtfilt(a,b,LFPdata);
 bpFilt = designfilt('bandpassiir','FilterOrder',20, ...
          'HalfPowerFrequency1',band(1),'HalfPowerFrequency2',band(2), ...
          'SampleRate',1000);
-Filtered=filtfilt(bpFilt,LFPdata);
+Filtered2=filtfilt(bpFilt,LFPdata);
      
      
-% or a first order fiir
-filtorder=3*round(dt*band(1));
+% or a first order fiir this takes wayyyyyy long because its order 8000
+filtorder=3*fix(band(1)/dt);
 fi=[0 (1-.15)*band(1)/fNQ band(1)/fNQ band(2)/fNQ (1+.15)*band(2)/fNQ 1];
 mi=[0  0                  1           1            0                  0] ;
 filtwts = firls(filtorder,fi,mi);             % get FIR filter coefficients
-Filtered = filtfilt(filtwts,1,LFPdata);
+Filtered2 = filtfilt(filtwts,1,LFPdata);
 %}
 % get phase and amplitude using the hilbert trnaform
 thetaparts=hilbert(Filtered);
