@@ -39,14 +39,14 @@ alpha1_bar = circ_mean(alpha1);
 alpha2_bar = circ_mean(alpha2);
 
 % compute correlation coeffcient from p. 176
-num = sum(sin(alpha1 - alpha1_bar) .* sin(alpha2 - alpha2_bar));
-den = sqrt(sum(sin(alpha1 - alpha1_bar).^2) .* sum(sin(alpha2 - alpha2_bar).^2));
+num = nansum(sin(alpha1 - alpha1_bar) .* sin(alpha2 - alpha2_bar));
+den = sqrt(nansum(sin(alpha1 - alpha1_bar).^2) .* nansum(sin(alpha2 - alpha2_bar).^2));
 rho = num / den;	
 
 % compute pvalue
-l20 = mean(sin(alpha1 - alpha1_bar).^2);
-l02 = mean(sin(alpha2 - alpha2_bar).^2);
-l22 = mean((sin(alpha1 - alpha1_bar).^2) .* (sin(alpha2 - alpha2_bar).^2));
+l20 = nanmean(sin(alpha1 - alpha1_bar).^2);
+l02 = nanmean(sin(alpha2 - alpha2_bar).^2);
+l22 = nanmean((sin(alpha1 - alpha1_bar).^2) .* (sin(alpha2 - alpha2_bar).^2));
 
 ts = sqrt((n * l20 * l02)/l22) * rho;
 pval = 2 * (1 - normcdf(abs(ts)));

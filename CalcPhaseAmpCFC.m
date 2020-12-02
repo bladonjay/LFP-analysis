@@ -25,7 +25,7 @@ end
 
 % convert LoAmps to logial array
 if isempty(LoAmps)
-    LoAmps=true(size(Phases));
+    LoAmps=true(size(phases));
 else
     LoAmps=LoAmps>Cutoff;
 end
