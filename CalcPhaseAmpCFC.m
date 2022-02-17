@@ -113,6 +113,9 @@ hold on;
 plot(1:bins,phasedist);
 %}
 
+
+% this code was adapted from the below bit used by antonio fernandez ruiz
+
 % [comod] = bz_CrossFreqMod(lfp,phaserange,amprange,flagPlot)
 %
 %

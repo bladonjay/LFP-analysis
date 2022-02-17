@@ -78,13 +78,17 @@ elseif method == 2
     Phase=allPhases(fullinds);
 end
 % and here we correct for the asymmetry of the oscillation phases, as it
-% can be saw-toothed.
+% can be saw-toothed. This basically makes sure the distribution of phases
+% is uniform, so each phase occurs equally often
 if method==1
-    [cdfphase,newphase]=sort(Phase);
-    [mycdf,x]=ecdf(cdfphase);
-    [~,ib]=sort(newphase);
-    Phase2=mycdf(ib)*2*pi-pi;
-    Phase=Phase2;
+    %[cdfphase,newphase]=sort(Phase);
+    %[mycdf,x]=ecdf(cdfphase);
+    %[~,ib]=sort(newphase);
+    %Phase2=mycdf(ib)*2*pi-pi;
+    %Phase=Phase2;
+    % first get the values
+    Phase=tiedrank(Phase);
+    Phase=((Phase-1)/max(Phase))*2*pi-pi;
 end
 
 
